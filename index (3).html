@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Star - Panduan Bintang Sepak Bola</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #202820;
+            background: #f7faf6;
+            line-height: 1.7;
+        }
+
+        :root {
+            --green: #168447;
+            --dark: #102c20;
+            --light: #eaf5ec;
+            --gold: #eabf50;
+            --white: #fff;
+        }
+
+        /* NAVBAR */
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            color: white;
+            background:
+                linear-gradient(90deg, rgba(8,35,22,.94), rgba(8,35,22,.45)),
+                url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1800&q=85')
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #e1eee4;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 13px 27px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: .3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        /* GENERAL SECTION */
+        section {
+            padding: 75px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--dark);
+        }
+
+        .section-title p {
+            color: #718075;
+            margin-top: 8px;
+        }
+
+        .section-title span {
+            color: var(--green);
+        }
+
+        /* FUNDAMENTALS */
+        .fundamentals {
+            background: white;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #f4f9f4;
+            padding: 28px 22px;
+            border-radius: 14px;
+            border: 1px solid #e2eee4;
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px #173b2020;
+        }
+
+        .card .icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: var(--green);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #647267;
+        }
+
+        /* DAILY ROUTINE */
+        .routine {
+            background: var(--light);
+        }
+
+        .routine-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .routine-item {
+            display: flex;
+            gap: 22px;
+            padding: 24px;
+            margin-bottom: 18px;
+            background: white;
+            border-radius: 12px;
+            border-left: 5px solid var(--green);
+            box-shadow: 0 5px 15px #00000008;
+        }
+
+        .time {
+            min-width: 95px;
+            font-weight: 800;
+            color: var(--green);
+        }
+
+        .routine-item h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .routine-item p {
+            font-size: 14px;
+            color: #718075;
+        }
+
+        /* MENTAL AND NUTRITION */
+        .mental {
+            background: white;
+        }
+
+        .mental-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .mental-card {
+            padding: 28px;
+            border-radius: 14px;
+            background: var(--dark);
+            color: white;
+        }
+
+        .mental-card h3 {
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .mental-card p {
+            color: #d6e5da;
+            font-size: 14px;
+        }
+
+        /* CAREER PATH */
+        .pathway {
+            background: #f0f6ef;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            background: white;
+            text-align: center;
+            padding: 27px 18px;
+            border-radius: 14px;
+            position: relative;
+        }
+
+        .step-number {
+            background: var(--green);
+            color: white;
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 17px;
+            font-weight: 800;
+        }
+
+        .step h3 {
+            font-size: 16px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #718075;
+            font-size: 13px;
+        }
+
+        /* MOTIVATION */
+        .motivation {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 75px 10%;
+        }
+
+        .motivation h2 {
+            color: var(--gold);
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .motivation p {
+            max-width: 700px;
+            margin: auto auto 25px;
+            color: #d8e6dc;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #091b12;
+            color: white;
+            padding: 35px 8%;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #b6c8bb;
+        }
+
+        .social {
+            margin: 15px 0;
+        }
+
+        .social a {
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .cards, .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mental-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            header {
+                padding: 15px 6%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: var(--dark);
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 520px;
+                padding: 60px 7%;
+            }
+
+            section {
+                padding: 60px 6%;
+            }
+
+            .cards, .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .routine-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .section-title h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo">FOOTBALL<span>STAR.</span></div>
+
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <nav id="navbar">
+            <a href="#home">Beranda</a>
+            <a href="#fundamentals">Teknik</a>
+            <a href="#routine">Latihan</a>
+            <a href="#mental">Mental & Nutrisi</a>
+            <a href="#pathway">Karier</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Raih Mimpimu Menjadi <span>Bintang Sepak Bola!</span></h1>
+
+            <p>
+                Langkah nyata dari latihan dasar, disiplin mental,
+                hingga masuk akademi. Mulai perjalananmu hari ini
+                dan jadilah pemain sepak bola yang hebat!
+            </p>
+
+            <a href="#fundamentals" class="btn">
+                Mulai Latihan Sekarang →
+            </a>
+        </div>
+    </section>
+
+    <!-- FUNDAMENTALS -->
+    <section class="fundamentals" id="fundamentals">
+        <div class="section-title">
+            <h2>Fondasi <span>Teknis Sepak Bola</span></h2>
+            <p>Kuasai empat kemampuan dasar untuk menjadi pemain hebat.</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="icon">⚽</div>
+                <h3>Ball Control</h3>
+                <p>
+                    Latih kemampuan mengontrol bola menggunakan kaki,
+                    paha, dan dada agar penguasaan bola semakin baik.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h3>Passing & Akurasi</h3>
+                <p>
+                    Tingkatkan akurasi operan pendek dan panjang
+                    agar mampu bekerja sama dengan rekan tim.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏃</div>
+                <h3>Kecepatan & Kelincahan</h3>
+                <p>
+                    Lakukan sprint, latihan koordinasi, dan perubahan
+                    arah untuk meningkatkan pergerakan.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🥅</div>
+                <h3>Finishing</h3>
+                <p>
+                    Berlatih menembak menggunakan kaki kanan dan kiri
+                    untuk meningkatkan peluang mencetak gol.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAILY ROUTINE -->
+    <section class="routine" id="routine">
+        <div class="section-title">
+            <h2>Pola Latihan <span>Harian</span></h2>
+            <p>Bangun kebiasaan positif melalui latihan yang teratur.</p>
+        </div>
+
+        <div class="routine-container">
+
+            <div class="routine-item">
+                <div class="time">06.00</div>
+                <div>
+                    <h3>Latihan Fisik Pagi</h3>
+                    <p>
+                        Pemanasan, jogging ringan, latihan kekuatan,
+                        dan peregangan dinamis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="routine-item">
+                <div class="time">07.00</div>
+                <div>
+                    <h3>Teknik Dasar</h3>
+                    <p>
+                        Latihan dribbling, passing, ball control,
+                        dan juggling sesuai kemampuan.
+                    </p>
+                </div>
+            </div>
+
+            <div class="routine-item">
+                <div class="time">16.00</div>
+                <div>
+                    <h3>Latihan Taktik Sore</h3>
+                    <p>
+                        Pelajari posisi bermain, pergerakan tanpa bola,
+                        dan strategi permainan.
+                    </p>
+                </div>
+            </div>
+
+            <div class="routine-item">
+                <div class="time">17.00</div>
+                <div>
+                    <h3>Small-Sided Game</h3>
+                    <p>
+                        Bermain sepak bola dengan kelompok kecil
+                        untuk melatih keputusan dan kerja sama tim.
+                    </p>
+                </div>
+            </div>
+
+            <div class="routine-item">
+                <div class="time">20.00</div>
+                <div>
+                    <h3>Evaluasi dan Pemulihan</h3>
+                    <p>
+                        Evaluasi latihan, lakukan peregangan ringan,
+                        dan persiapkan waktu tidur yang cukup.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MENTAL & NUTRITION -->
+    <section class="mental" id="mental">
+        <div class="section-title">
+            <h2>Mentalitas & <span>Nutrisi Atlet</span></h2>
+            <p>Fisik yang kuat harus didukung pikiran dan pola hidup sehat.</p>
+        </div>
+
+        <div class="mental-grid">
+
+            <div class="mental-card">
+                <h3>😴 Pola Tidur</h3>
+                <p>
+                    Usahakan tidur 8–10 jam setiap malam bagi remaja.
+                    Istirahat yang cukup membantu tubuh pulih
+                    dan menjaga konsentrasi saat latihan.
+                </p>
+            </div>
+
+            <div class="mental-card">
+                <h3>🥗 Nutrisi Seimbang</h3>
+                <p>
+                    Konsumsi karbohidrat, protein, sayuran,
+                    buah-buahan, dan air putih untuk mendukung
+                    energi serta pemulihan tubuh.
+                </p>
+            </div>
+
+            <div class="mental-card">
+                <h3>🔥 Mental Baja</h3>
+                <p>
+                    Tetap disiplin, percaya diri, jangan takut gagal,
+                    dan terus belajar dari kesalahan.
+                    Konsistensi adalah kunci perkembangan.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CAREER PATH -->
+    <section class="pathway" id="pathway">
+        <div class="section-title">
+            <h2>Jalur Menuju <span>Pemain Profesional</span></h2>
+            <p>Kenali tahapan perjalanan untuk membangun karier sepak bola.</p>
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Bergabung dengan SSB</h3>
+                <p>
+                    Ikuti Sekolah Sepak Bola untuk mendapatkan
+                    pelatihan dan bimbingan pelatih.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Kompetisi Lokal</h3>
+                <p>
+                    Ikuti pertandingan dan turnamen usia muda
+                    untuk mendapatkan pengalaman.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Seleksi Akademi</h3>
+                <p>
+                    Tingkatkan kemampuan dan ikuti seleksi
+                    akademi atau program pembinaan klub.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Trial Klub Profesional</h3>
+                <p>
+                    Tunjukkan kemampuan terbaik dalam proses
+                    seleksi klub dan persiapkan karier profesional.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MOTIVATION -->
+    <section class="motivation">
+        <h2>Setiap Bintang Berawal dari Latihan!</h2>
+
+        <p>
+            Tidak ada kesuksesan yang datang secara instan.
+            Teruslah berlatih, jaga kesehatan, hormati pelatih,
+            dan jangan pernah menyerah mengejar impianmu.
+            Lapangan adalah tempatmu membuktikan kemampuan!
+        </p>
+
+        <a href="#routine" class="btn">Lihat Jadwal Latihan</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="logo">FOOTBALL<span>STAR.</span></div>
+
+        <div class="social">
+            <a href="https://instagram.com/" target="_blank">Instagram</a>
+            <a href="https://youtube.com/" target="_blank">YouTube</a>
+            <a href="https://tiktok.com/" target="_blank">TikTok</a>
+        </div>
+
+        <p>
+            © 2026 Football Star. Panduan Menuju Bintang Sepak Bola.
+        </p>
+
+        <p>Dream Big • Train Hard • Never Give Up</p>
+    </footer>
+
+    <script>
+        // MENU RESPONSIF
+        function toggleMenu() {
+            document.getElementById("navbar").classList.toggle("active");
+        }
+
+        // TUTUP MENU SETELAH LINK DIKLIK
+        document.querySelectorAll("#navbar a").forEach(link => {
+            link.addEventListener("click", () => {
+                document.getElementById("navbar").classList.remove("active");
+            });
+        });
+    </script>
+
+</body>
+</html>
